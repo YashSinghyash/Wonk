@@ -17,25 +17,28 @@ export default function Home() {
           <Link href="/learn" className="btn-primary">
             Enter Arena
           </Link>
-          <Link href="/play" className={styles.secondaryBtn}>
-            View Leaderboard
-          </Link>
         </div>
       </header>
 
       <section className={styles.features}>
-        <div className="card">
-          <h3>LEARN</h3>
-          <p>Strict, unyielding lessons on trading, corporate finance, and wealth destruction prevention.</p>
-        </div>
-        <div className="card">
-          <h3>EARN</h3>
-          <p>Execute flawlessly to earn WONK tokens. Second place is first loser.</p>
-        </div>
-        <div className="card">
-          <h3>PLAY</h3>
-          <p>Compete in the Boardroom or Self Lab to claim your spot at the top.</p>
-        </div>
+        <Link href="/learn" className={styles.featureLink}>
+          <div className="card">
+            <h3>LEARN</h3>
+            <p>Strict, unyielding lessons on trading, corporate finance, and wealth destruction prevention.</p>
+          </div>
+        </Link>
+        <Link href="/earn" className={styles.featureLink}>
+          <div className="card">
+            <h3>EARN</h3>
+            <p>Execute flawlessly to earn WONK tokens. Second place is first loser.</p>
+          </div>
+        </Link>
+        <Link href="/play" className={styles.featureLink}>
+          <div className="card">
+            <h3>PLAY</h3>
+            <p>Compete in the Boardroom or Self Lab to claim your spot at the top.</p>
+          </div>
+        </Link>
       </section>
     </div>
   );

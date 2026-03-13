@@ -211,41 +211,77 @@ export default function SimulatorPage() {
     return (
       <div className={styles.container}>
         <div className={styles.header}>
-          <h1>Market Simulator</h1>
-          <p>Replay real market data. Trade like it's live.</p>
+          <h1>SIMULATORS</h1>
+          <p>Choose your trading experience.</p>
         </div>
 
-        <div className={styles.setupPanel}>
-          <div className={styles.formGrid}>
-            <div className={styles.formGroup}>
-              <label>Company</label>
-              <select value={symbol} onChange={e => setSymbol(e.target.value)}>
-                {COMPANIES.map(c => (
-                  <option key={c.symbol} value={c.symbol}>{c.name} ({c.symbol.replace('.NS', '')})</option>
-                ))}
-              </select>
+        <div className={styles.simulatorsGrid}>
+          {/* Market Simulator Card */}
+          <div className={styles.setupPanel}>
+            <div className={styles.panelHeader}>
+              <h2>Market Simulator</h2>
+              <p>Replay real market data. Trade like it's live.</p>
             </div>
-            <div className={styles.formGroup}>
-              <label>Speed</label>
-              <div className={styles.speedRow}>
-                <input type="range" min="1" max="50" value={speed} onChange={e => setSpeed(Number(e.target.value))} />
-                <span>{speed}x</span>
+
+            <div className={styles.formGrid}>
+              <div className={styles.formGroup}>
+                <label>Company</label>
+                <select value={symbol} onChange={e => setSymbol(e.target.value)}>
+                  {COMPANIES.map(c => (
+                    <option key={c.symbol} value={c.symbol}>{c.name} ({c.symbol.replace('.NS', '')})</option>
+                  ))}
+                </select>
+              </div>
+              <div className={styles.formGroup}>
+                <label>Speed</label>
+                <div className={styles.speedRow}>
+                  <input type="range" min="1" max="50" value={speed} onChange={e => setSpeed(Number(e.target.value))} />
+                  <span>{speed}x</span>
+                </div>
+              </div>
+              <div className={styles.formGroup}>
+                <label>Start Date</label>
+                <input type="date" value={startDate} onChange={e => setStartDate(e.target.value)} />
+              </div>
+              <div className={styles.formGroup}>
+                <label>End Date</label>
+                <input type="date" value={endDate} onChange={e => setEndDate(e.target.value)} />
               </div>
             </div>
-            <div className={styles.formGroup}>
-              <label>Start Date</label>
-              <input type="date" value={startDate} onChange={e => setStartDate(e.target.value)} />
-            </div>
-            <div className={styles.formGroup}>
-              <label>End Date</label>
-              <input type="date" value={endDate} onChange={e => setEndDate(e.target.value)} />
+
+            <div style={{ marginTop: 'auto' }}>
+              <button className={`btn-primary ${styles.loadBtn}`} onClick={handleLoad} disabled={loading}>
+                {loading ? 'LOADING DATA...' : 'LOAD SIMULATION'}
+              </button>
+              {error && <div className={styles.errorMsg}>{error}</div>}
             </div>
           </div>
 
-          <button className={`btn-primary ${styles.loadBtn}`} onClick={handleLoad} disabled={loading}>
-            {loading ? 'LOADING DATA...' : 'LOAD SIMULATION'}
-          </button>
-          {error && <div className={styles.errorMsg}>{error}</div>}
+          {/* Portfolio Allocator Card */}
+          <div className={styles.setupPanel}>
+            <div className={styles.panelHeader}>
+              <h2>Portfolio Allocator</h2>
+              <p>Allocate ₹50,000 across 5 asset classes.<br/>Simulate 5 years of real market data (2018–2022).</p>
+            </div>
+
+            <div className={styles.assetsVisual}>
+              <div className={styles.assetsVisualRow}>
+                <span>📈 STOCKS</span>
+                <span>₿ CRYPTO</span>
+                <span>🏛️ BONDS</span>
+              </div>
+              <div className={styles.assetsVisualRow}>
+                <span>🥇 GOLD</span>
+                <span>🏠 REAL ESTATE</span>
+              </div>
+            </div>
+
+            <div style={{ marginTop: 'auto' }}>
+              <Link href="/simulator/portfolio" className={`btn-primary ${styles.loadBtn}`} style={{ textAlign: 'center', display: 'block' }}>
+                LAUNCH ALLOCATOR
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     );

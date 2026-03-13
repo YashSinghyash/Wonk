@@ -64,20 +64,32 @@
   margin-top: 4rem;
 }
 
-:global(.card h3) {
+.featureLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  outline: none;
+}
+
+.features :global(.card) {
+  height: 100%;
+}
+
+.features :global(.card h3) {
   font-size: 2rem;
   margin-bottom: 1rem;
-  color: var(--foreground);
   border-bottom: 2px solid var(--border);
   padding-bottom: 0.5rem;
   display: inline-block;
+  transition: all 0.2s ease;
 }
 
-:global(.card p) {
-  color: var(--foreground);
+.features :global(.card p) {
   opacity: 0.8;
   line-height: 1.6;
 }
+
+
 
 @media (max-width: 768px) {
   .title {
