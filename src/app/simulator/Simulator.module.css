@@ -1,0 +1,393 @@
+.container {
+  padding: 2rem 2rem 4rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.header h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.header p {
+  font-family: var(--font-mono);
+  color: var(--border);
+  font-size: 0.9rem;
+}
+
+/* ── Setup Panel ── */
+.setupPanel {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  padding: 2.5rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formGroup label {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.formGroup select,
+.formGroup input {
+  background: var(--background);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  padding: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.formGroup select:focus,
+.formGroup input:focus {
+  border-color: var(--foreground);
+}
+
+.speedRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.speedRow label {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.speedRow input[type="range"] {
+  flex: 1;
+  accent-color: var(--foreground);
+}
+
+.speedRow span {
+  font-family: var(--font-mono);
+  font-weight: 800;
+  min-width: 40px;
+  text-align: right;
+}
+
+.loadBtn {
+  width: 100%;
+}
+
+.errorMsg {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--foreground);
+  color: var(--background);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-align: center;
+}
+
+/* ── Simulator Layout ── */
+.simLayout {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 2rem;
+}
+
+.chartPanel {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.chartHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+
+.chartHeader .price {
+  font-size: 1.4rem;
+}
+
+.priceDelta {
+  padding: 4px 10px;
+  font-size: 0.8rem;
+}
+
+.up { color: var(--foreground); background: transparent; border: 1px solid var(--foreground); }
+.down { color: var(--border); background: transparent; border: 1px solid var(--border); }
+
+.chartBody {
+  flex: 1;
+  min-height: 400px;
+}
+
+.controlBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.controlBar button {
+  background: var(--foreground);
+  color: var(--background);
+  border: none;
+  padding: 8px 20px;
+  font-family: var(--font-mono);
+  font-weight: 800;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+
+.controlBar button:hover {
+  opacity: 0.8;
+}
+
+.progressBar {
+  flex: 1;
+  height: 4px;
+  background: var(--border);
+  margin: 0 1.5rem;
+  position: relative;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--foreground);
+  transition: width 0.3s;
+}
+
+/* ── Order Panel ── */
+.orderPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.orderBox {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 1.25rem;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.orderBox:hover {
+  border-color: var(--foreground);
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0px var(--border);
+}
+
+.orderBoxHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.orderBoxHeader h3 {
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+}
+
+.helpIcon {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--foreground);
+  color: var(--foreground);
+  background: transparent;
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+  text-decoration: none;
+}
+
+.helpIcon:hover {
+  background: var(--foreground);
+  color: var(--background);
+}
+
+.orderRow {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  width: 100%;
+}
+
+.orderRow input {
+  flex: 1;
+  min-width: 0;
+  background: var(--background);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  padding: 8px 10px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.orderRow input:focus {
+  border-color: var(--foreground);
+}
+
+.buyBtn, .sellBtn {
+  padding: 10px;
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  border: 2px solid var(--foreground);
+  cursor: pointer;
+  transition: all 0.15s;
+  flex: 1;
+}
+
+.buyBtn {
+  background: var(--foreground);
+  color: var(--background);
+}
+
+.buyBtn:hover {
+  background: transparent;
+  color: var(--foreground);
+}
+
+.sellBtn {
+  background: transparent;
+  color: var(--foreground);
+}
+
+.sellBtn:hover {
+  background: var(--foreground);
+  color: var(--background);
+}
+
+.buyBtn:disabled, .sellBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* ── Portfolio / Stats ── */
+.portfolio {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 1.25rem;
+}
+
+.portfolio h3 {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+}
+
+.statRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid #1a1a1a;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.statRow:last-child {
+  border-bottom: none;
+}
+
+.statLabel {
+  color: var(--border);
+}
+
+.statValue {
+  font-weight: 700;
+}
+
+/* ── Results ── */
+.results {
+  margin-top: 3rem;
+  padding: 2rem;
+  border: 2px solid var(--foreground);
+  text-align: center;
+}
+
+.results h2 {
+  margin-bottom: 1rem;
+}
+
+.resultGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.resultItem {
+  font-family: var(--font-mono);
+}
+
+.resultItem .val {
+  font-size: 2rem;
+  font-weight: 900;
+  display: block;
+}
+
+.resultItem .lbl {
+  font-size: 0.75rem;
+  color: var(--border);
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .simLayout {
+    grid-template-columns: 1fr;
+  }
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+  .resultGrid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,89 @@
+.container {
+  padding: 4rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.header p {
+  font-size: 1.1rem;
+  color: var(--foreground);
+  opacity: 0.8;
+  font-family: var(--font-mono);
+}
+
+.content {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 3rem;
+}
+
+.content h2 {
+  font-size: 1.8rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--foreground);
+}
+
+.content h2:first-child {
+  margin-top: 0;
+}
+
+.content p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--foreground);
+  margin-bottom: 1.5rem;
+}
+
+.content ul {
+  list-style-type: none;
+  padding-left: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.content li {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--foreground);
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.content li::before {
+  content: "»";
+  position: absolute;
+  left: -1rem;
+  color: var(--foreground);
+}
+
+.cta {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.cta a {
+  display: inline-block;
+  padding: 12px 24px;
+  font-family: var(--font-mono);
+  font-weight: 800;
+  text-transform: uppercase;
+  border: 2px solid var(--foreground);
+  color: var(--foreground);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.cta a:hover {
+  background: var(--foreground);
+  color: var(--background);
+}

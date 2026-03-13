@@ -1,0 +1,105 @@
+.container {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.lessonInfo {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.lessonInfo h2 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.messageBox {
+  padding: 1rem 2rem;
+  display: inline-block;
+  color: var(--background);
+  background: var(--foreground);
+  font-family: var(--font-mono);
+  font-weight: 800;
+  text-transform: uppercase;
+  border: 2px solid var(--foreground);
+  box-shadow: 4px 4px 0px var(--border);
+}
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+
+.chartArea {
+  height: 500px;
+  padding: 2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+.priceHighlight {
+  color: var(--foreground);
+  background: var(--border);
+  padding: 0 8px;
+}
+
+.visualizer {
+  flex: 1;
+  width: 100%;
+  position: relative;
+  /* border-left and border-bottom styling removed since chart grid takes over */
+}
+
+/* remove .bar and .slLine */
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.inputGroup {
+  margin: 2rem 0;
+}
+
+.inputGroup label {
+  display: block;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+
+.slider {
+  width: 100%;
+  accent-color: var(--foreground);
+}
+
+.activePulse {
+  text-align: center;
+  color: var(--background);
+  background: var(--foreground);
+  padding: 1rem;
+  font-family: var(--font-mono);
+  animation: none;
+  font-weight: 800;
+  margin-top: 1rem;
+  box-shadow: 4px 4px 0px var(--border);
+}
+
+@media (max-width: 900px) {
+  .mainGrid {
+    grid-template-columns: 1fr;
+  }
+}
