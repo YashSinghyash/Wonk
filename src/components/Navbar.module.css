@@ -40,3 +40,34 @@
     display: none;
   }
 }
+
+.activeLink {
+  background: var(--foreground);
+  color: var(--background) !important;
+}
+
+.profileBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 10px 20px;
+  background: transparent;
+  color: var(--foreground);
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 2px solid var(--foreground);
+  transition: all 0.2s;
+}
+
+.profileBtn:hover {
+  background: var(--foreground);
+  color: var(--background);
+}
+
+.profileIcon {
+  display: flex;
+  align-items: center;
+}

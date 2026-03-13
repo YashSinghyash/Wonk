@@ -1,0 +1,255 @@
+.container {
+  padding: 4rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 4px solid var(--foreground);
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border: 3px solid var(--foreground);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-main);
+  font-size: 2.5rem;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  letter-spacing: -0.03em;
+}
+
+.subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--border);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.statCard {
+  border: 1px solid var(--border);
+  padding: 1.25rem;
+  text-align: center;
+  background: var(--surface);
+  transition: border-color 0.2s;
+}
+
+.statCard:hover {
+  border-color: var(--foreground);
+}
+
+.statNum {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 0.25rem;
+}
+
+.statLabel {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.logSection {
+  border: 2px solid var(--border);
+  background: var(--surface);
+  margin-bottom: 2rem;
+}
+
+.logHeader {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.logHeader h2 {
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+}
+
+.filters {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.filterBtn {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--border);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filterBtn:hover {
+  border-color: var(--foreground);
+  color: var(--foreground);
+}
+
+.filterActive {
+  background: var(--foreground);
+  color: var(--background);
+  border-color: var(--foreground);
+}
+
+.logList {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.logItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(51, 51, 51, 0.5);
+  transition: background 0.2s;
+}
+
+.logItem:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.logIcon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.logContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.logTitle {
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logTypeBadge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 6px;
+  border: 1px solid;
+  flex-shrink: 0;
+}
+
+.logDetail {
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: 0.25rem;
+}
+
+.logTime {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #666;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.emptyState {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.emptyState p {
+  font-family: var(--font-mono);
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.exploreBtn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: var(--foreground);
+  color: var(--background);
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  border: 2px solid var(--foreground);
+  transition: all 0.2s;
+}
+
+.exploreBtn:hover {
+  background: transparent;
+  color: var(--foreground);
+}
+
+.clearBtn {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  background: transparent;
+  color: #f87171;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.clearBtn:hover {
+  background: rgba(248, 113, 113, 0.1);
+  border-color: #f87171;
+}
+
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    text-align: center;
+  }
+  .header h1 {
+    font-size: 1.8rem;
+  }
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .logHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

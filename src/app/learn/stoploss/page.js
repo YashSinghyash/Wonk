@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { LineChart, Line, YAxis, CartesianGrid, ResponsiveContainer, ReferenceLine } from 'recharts';
+import { logActivity, markCompleted } from '@/lib/activityTracker';
 import styles from './StopLoss.module.css';
 
 export default function StopLossPage() {
@@ -54,6 +55,8 @@ export default function StopLossPage() {
     setGameState('ENDED');
     const loss = triggerPrice - position.entryPrice;
     setMessage(`STOP LOSS TRIGGERED AT $${triggerPrice.toFixed(2)}. CAPITAL PROTECTED. LOSS: $${Math.abs(loss).toFixed(2)}.`);
+    markCompleted('stoploss');
+    logActivity('learn', 'StopLoss Simulation', `Stop loss triggered. Loss: $${Math.abs(loss).toFixed(2)}`);
   };
 
   const handleRestart = () => {

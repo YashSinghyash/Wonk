@@ -27,6 +27,19 @@
   gap: 2rem;
 }
 
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.cardTopRight {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
 .tag {
   display: inline-block;
   padding: 4px 8px;
@@ -36,16 +49,26 @@
   font-size: 0.8rem;
   font-weight: 800;
   text-transform: uppercase;
-  margin-bottom: 1rem;
 }
 
 .level {
-  float: right;
   font-family: var(--font-mono);
   font-size: 0.8rem;
   font-weight: 700;
   color: var(--foreground);
   opacity: 0.6;
+}
+
+.completedBadge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #4ade80;
+  border: 1px solid #4ade80;
+  padding: 2px 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .link {
@@ -63,6 +86,11 @@
   transform: translateX(5px);
 }
 
+.lockedCard {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
 :global(.card:hover) .tag {
   background: var(--background);
   color: var(--foreground);
@@ -77,4 +105,7 @@
   color: var(--background);
 }
 
-/* Removed Scenarios Section (Moved to Play) */
+:global(.card:hover) .completedBadge {
+  color: var(--background);
+  border-color: var(--background);
+}

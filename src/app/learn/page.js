@@ -1,49 +1,78 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { isCompleted } from '@/lib/activityTracker';
 import styles from './Learn.module.css';
+
 const topics = [
   {
-    id: 1,
+    id: 'stoploss',
     title: 'StopLoss',
     description: 'Learn how to protect your capital using Stop Loss orders in a simulated trading environment.',
     method: 'Self Lab',
     path: '/learn/stoploss',
-    level: 'Beginner'
+    level: 'Beginner',
+    unlocked: true,
   },
   {
-    id: 2,
+    id: 'delivery',
     title: 'Delivery Orders',
     description: 'The foundation of long-term investing and wealth building. Understand cash and carry trades.',
     method: 'Both',
     path: '/learn/delivery',
-    level: 'Beginner'
+    level: 'Beginner',
+    unlocked: true,
   },
   {
-    id: 3,
+    id: 'intraday',
     title: 'Intraday Trading',
     description: 'High-speed execution. Zero overnight risk. Master the art of day trading and short selling.',
     method: 'Boardroom',
     path: '/learn/intraday',
-    level: 'Advanced'
+    level: 'Advanced',
+    unlocked: true,
   },
   {
-    id: 5,
+    id: 'candlestick',
+    title: 'Candlestick Patterns',
+    description: 'Master 11 essential candlestick patterns — from Doji and Hammer to Morning Star and Three Black Crows.',
+    method: 'Simulator',
+    path: '/learn/candlestick',
+    level: 'Intermediate',
+    unlocked: true,
+  },
+  {
+    id: 'capital-budgeting',
     title: 'Capital Budgeting',
     description: 'Take the hot seat as a CFO and decide which projects to fund based on NPV and IRR.',
     method: 'Boardroom',
     path: '#',
-    level: 'Advanced'
+    level: 'Advanced',
+    unlocked: false,
   },
   {
-    id: 6,
+    id: 'risk-management',
     title: 'Risk Management',
     description: 'Master the art of balancing risk and reward in complex financial scenarios.',
     method: 'Both',
     path: '#',
-    level: 'Intermediate'
-  }
+    level: 'Intermediate',
+    unlocked: false,
+  },
 ];
 
 export default function LearnPage() {
+  const [completed, setCompleted] = useState({});
+
+  useEffect(() => {
+    const map = {};
+    topics.forEach(t => {
+      map[t.id] = isCompleted(t.id);
+    });
+    setCompleted(map);
+  }, []);
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -53,13 +82,18 @@ export default function LearnPage() {
 
       <div className={styles.grid}>
         {topics.map((topic) => (
-          <div key={topic.id} className="card">
-            <div className={styles.tag}>{topic.method}</div>
-            <div className={styles.level}>[ {topic.level.toUpperCase()} ]</div>
+          <div key={topic.id} className={`card ${!topic.unlocked ? styles.lockedCard : ''}`}>
+            <div className={styles.cardTop}>
+              <div className={styles.tag}>{topic.method}</div>
+              <div className={styles.cardTopRight}>
+                {completed[topic.id] && <span className={styles.completedBadge}>✓ DONE</span>}
+                <div className={styles.level}>[ {topic.level.toUpperCase()} ]</div>
+              </div>
+            </div>
             <h3>{topic.title}</h3>
             <p>{topic.description}</p>
             <Link href={topic.path} className={styles.link}>
-              {topic.title === 'StopLoss' ? 'Initialize Sim >' : 'Locked'}
+              {completed[topic.id] ? 'Review >' : topic.unlocked ? 'Start >' : 'Locked'}
             </Link>
           </div>
         ))}

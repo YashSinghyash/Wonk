@@ -1,9 +1,16 @@
 'use client';
 
+import { useEffect } from 'react';
 import Link from 'next/link';
+import { logActivity, markCompleted } from '@/lib/activityTracker';
 import styles from '../Article.module.css';
 
 export default function DeliveryPage() {
+  useEffect(() => {
+    markCompleted('delivery');
+    logActivity('learn', 'Read: Delivery Orders', 'Completed the Delivery Orders article');
+  }, []);
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
