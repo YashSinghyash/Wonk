@@ -98,11 +98,11 @@ export default function EarnPage() {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%' }}>
               <button 
-                onClick={() => handleStartContest(contest.id)} 
+                disabled={true}
                 className={styles.startBtn}
-                style={{ border: 'none', cursor: 'pointer', width: '100%' }}
+                style={{ border: 'none', cursor: 'not-allowed', width: '100%', backgroundColor: '#333', color: '#888' }}
               >
-                PAY ₹1 TO ENTER
+                PAY ₹1 TO ENTER (Razorpay API Approval Pending)
               </button>
               
               <button 
