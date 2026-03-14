@@ -1,6 +1,5 @@
-🏆 Hackathon Friendly
-
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Live deployment: [https://wonk-36h22bm5h-yashsinghyashs-projects.vercel.app/earn](https://wonk-36h22bm5h-yashsinghyashs-projects.vercel.app/)
 
 ## Getting Started
 
