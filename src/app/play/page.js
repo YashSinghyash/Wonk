@@ -1,8 +1,26 @@
-import Link from 'next/link';
+'use client';
+
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import styles from './Play.module.css';
 import { scenarios } from './scenarios';
 
 export default function PlayPage() {
+  const router = useRouter();
+  const [solvedScenarios, setSolvedScenarios] = useState({});
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const solved = {};
+      scenarios.forEach(s => {
+        if (localStorage.getItem(`solved_scenario_${s.id}`) === 'true') {
+          solved[s.id] = true;
+        }
+      });
+      setSolvedScenarios(solved);
+    }
+  }, []);
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -23,28 +41,35 @@ export default function PlayPage() {
           </thead>
           <tbody>
             {scenarios.map((scenario) => (
-              <Link href={`/play/scenario/${scenario.id}`} key={scenario.id} legacyBehavior>
-                <tr className={styles.scenarioRow}>
-                  <td className={styles.statusCell}>
-                    <span className={`${styles.statusIcon} ${scenario.status === 'solved' ? styles.solved : ''}`}></span>
-                  </td>
-                  <td className={styles.titleCell}>
-                    <span className={styles.scenarioTitle}>{scenario.id}. {scenario.title}</span>
-                    <span className={styles.scenarioDesc}>{scenario.description}</span>
-                  </td>
-                  <td className={styles.tagCell}>
-                    <span className={styles.tagLabel}>{scenario.tag}</span>
-                  </td>
-                  <td className={styles.diffCell}>
-                    <span className={
-                      scenario.difficulty === 'Easy' ? styles.diffEasy :
-                      scenario.difficulty === 'Medium' ? styles.diffMedium : styles.diffHard
-                    }>
-                      {scenario.difficulty}
-                    </span>
-                  </td>
-                </tr>
-              </Link>
+              <tr 
+                key={scenario.id} 
+                className={styles.scenarioRow} 
+                onClick={() => router.push(`/play/scenario/${scenario.id}`)}
+                style={{ cursor: 'pointer' }}
+              >
+                <td className={styles.statusCell}>
+                  {solvedScenarios[scenario.id] ? (
+                    <span className={styles.solvedTick}>✓</span>
+                  ) : (
+                    <span className={styles.statusIcon}></span>
+                  )}
+                </td>
+                <td className={styles.titleCell}>
+                  <span className={styles.scenarioTitle}>{scenario.id}. {scenario.title}</span>
+                  <span className={styles.scenarioDesc}>{scenario.description}</span>
+                </td>
+                <td className={styles.tagCell}>
+                  <span className={styles.tagLabel}>{scenario.tag}</span>
+                </td>
+                <td className={styles.diffCell}>
+                  <span className={
+                    scenario.difficulty === 'Easy' ? styles.diffEasy :
+                    scenario.difficulty === 'Medium' ? styles.diffMedium : styles.diffHard
+                  }>
+                    {scenario.difficulty}
+                  </span>
+                </td>
+              </tr>
             ))}
           </tbody>
         </table>

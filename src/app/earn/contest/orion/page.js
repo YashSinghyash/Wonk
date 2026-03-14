@@ -219,7 +219,7 @@ export default function OrionContestPage() {
         <div className={styles.resultsScreen}>
           <div className={styles.ratingHeader}>
             <span className={styles.ratingEmoji}>{isBankrupt ? '💀' : rating.emoji}</span>
-            <h1 style={{ color: isBankrupt ? '#f87171' : rating.color }}>{isBankrupt ? 'BANKRUPT' : rating.title}</h1>
+            <h1 style={{ color: isBankrupt ? 'var(--neon-red)' : rating.color, textShadow: `0 0 20px ${isBankrupt ? 'var(--neon-red)' : rating.color}` }}>{isBankrupt ? 'BANKRUPT' : rating.title}</h1>
             <p className={styles.ratingDesc}>{isBankrupt ? 'Orion Technologies filed for bankruptcy. All assets liquidated.' : rating.description}</p>
             {exitData && exitData.exitType !== 'bankrupt' && (
               <div className={styles.exitBadge}>

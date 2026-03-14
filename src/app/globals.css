@@ -7,6 +7,13 @@
   --border: #333333;
   --border-focus: #ffffff;
   
+  /* Techno Accents */
+  --tech-cyan: #00f0ff;
+  --tech-red: #ff003c;
+  --tech-green: #00ff66;
+  --tech-yellow: #fcee0a;
+  --tech-purple: #bd00ff;
+
   --font-main: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 }
@@ -23,6 +30,19 @@ body {
   font-family: var(--font-main);
   min-height: 100vh;
   overflow-x: hidden;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: linear-gradient(var(--border) 1px, transparent 1px),
+                    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: -1;
 }
 
 a {
@@ -39,13 +59,22 @@ h1, h2, h3, h4 {
 
 /* Utilities */
 .card {
-  background: var(--background);
+  background: var(--surface);
   color: var(--foreground);
   border: 1px solid var(--border);
   border-radius: 0;
   padding: 2.5rem;
   transition: all 0.2s ease;
   position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 4px; height: 100%;
+  background: var(--tech-cyan);
+  transition: width 0.2s ease;
 }
 
 .card::after {
@@ -55,50 +84,70 @@ h1, h2, h3, h4 {
   left: 4px;
   right: -4px;
   bottom: -4px;
-  background: var(--border);
+  background: transparent;
+  border: 1px solid var(--border);
   z-index: -1;
   transition: all 0.2s ease;
 }
 
 .card:hover {
   transform: translate(-2px, -2px);
-  background: var(--foreground);
-  color: var(--background);
-  border-color: var(--foreground);
+  border-color: var(--tech-cyan);
+}
+
+.card:hover::before {
+  width: 8px;
+  box-shadow: 0 0 10px var(--tech-cyan);
 }
 
 .card:hover::after {
   transform: translate(4px, 4px);
-  background: var(--foreground);
+  border-color: var(--tech-cyan);
+  background: rgba(0, 240, 255, 0.05); /* Slight tint, not blur */
 }
 
 /* Ensure headings/paragraphs inside inverted cards also change color */
 .card:hover h1, 
 .card:hover h2, 
 .card:hover h3, 
-.card:hover h4, 
-.card:hover p {
-  color: var(--background);
+.card:hover h4 {
+  color: var(--tech-cyan);
 }
 
 
 .btn-primary {
   padding: 16px 32px;
-  background: var(--foreground);
-  color: var(--background);
+  background: var(--surface);
+  color: var(--tech-cyan);
   font-family: var(--font-mono);
   font-weight: 800;
   font-size: 1rem;
   text-transform: uppercase;
-  border: 2px solid var(--foreground);
+  border: 1px solid var(--tech-cyan);
   cursor: pointer;
-  box-shadow: 4px 4px 0px var(--border);
+  box-shadow: 4px 4px 0px rgba(0, 240, 255, 0.2);
   transition: all 0.1s;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; width: 50%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.4), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.5s ease;
+}
+
+.btn-primary:hover::before {
+  left: 150%;
 }
 
 .btn-primary:hover {
-  transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0px var(--foreground);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px rgba(0, 240, 255, 0.4);
+  background: rgba(0, 240, 255, 0.1);
 }
 
 .btn-primary:active {

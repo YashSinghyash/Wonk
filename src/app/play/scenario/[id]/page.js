@@ -15,6 +15,17 @@ export default function ScenarioPage() {
   const [selectedOption, setSelectedOption] = useState(null);
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
+  const handleSubmit = () => {
+    setHasSubmitted(true);
+    
+    // Check if the selected option is correct
+    if (scenario.content.options[selectedOption]?.isCorrect) {
+      if (typeof window !== 'undefined') {
+        localStorage.setItem(`solved_scenario_${scenarioId}`, 'true');
+      }
+    }
+  };
+
   if (!scenario) {
     return (
       <div className={styles.container}>
@@ -98,7 +109,7 @@ export default function ScenarioPage() {
             </div>
 
             {selectedOption !== null && !hasSubmitted && (
-              <button className={`${styles.btn} ${styles.submitBtn}`} onClick={() => setHasSubmitted(true)}>
+              <button className={`${styles.btn} ${styles.submitBtn}`} onClick={handleSubmit}>
                 SUBMIT DECISION
               </button>
             )}

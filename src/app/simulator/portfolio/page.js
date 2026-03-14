@@ -25,7 +25,7 @@ function AllocationSlider({ asset, value, onChange, remaining, total }) {
         <input
           type="range"
           min={0}
-          max={value + remaining}
+          max={BUDGET}
           step={1000}
           value={value}
           onChange={e => onChange(asset.id, Number(e.target.value))}

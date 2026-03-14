@@ -297,7 +297,7 @@ export default function SimulatorPage() {
 
       <div className={styles.simLayout}>
         {/* ── Chart ── */}
-        <div className={styles.chartPanel} style={drawingMode ? { cursor: 'crosshair', borderColor: 'var(--foreground)' } : {}}>
+        <div className={styles.chartPanel}>
           <div className={styles.chartHeader}>
             <div>
               <span className={styles.price}>₹{currentPrice.toFixed(2)}</span>

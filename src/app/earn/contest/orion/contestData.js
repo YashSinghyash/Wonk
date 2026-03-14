@@ -503,9 +503,9 @@ export function calculateScore(financials, decisions, initialFinancials) {
 }
 
 export function getCEORating(score) {
-  if (score >= 85) return { title: 'LEGENDARY CEO', emoji: '👑', description: 'You built an empire. History will remember your name.', color: '#ffd700' };
-  if (score >= 70) return { title: 'GREAT CEO', emoji: '⭐', description: 'Excellent leadership. The company thrives under your watch.', color: '#4ade80' };
-  if (score >= 50) return { title: 'AVERAGE CEO', emoji: '📊', description: 'Decent work. You kept the lights on, but nothing extraordinary.', color: '#fbbf24' };
-  if (score >= 30) return { title: 'STRUGGLING CEO', emoji: '⚠️', description: 'The board is unhappy. Shareholders are calling for your resignation.', color: '#f97316' };
-  return { title: 'FAILED CEO', emoji: '💀', description: 'The company collapsed under your leadership. Bankruptcy filing imminent.', color: '#f87171' };
+  if (score >= 85) return { title: 'LEGENDARY CEO', emoji: '👑', description: 'You built an empire. History will remember your name.', color: 'var(--neon-yellow)' };
+  if (score >= 70) return { title: 'GREAT CEO', emoji: '⭐', description: 'Excellent leadership. The company thrives under your watch.', color: 'var(--neon-green)' };
+  if (score >= 50) return { title: 'AVERAGE CEO', emoji: '📊', description: 'Decent work. You kept the lights on, but nothing extraordinary.', color: 'var(--neon-blue)' };
+  if (score >= 30) return { title: 'STRUGGLING CEO', emoji: '⚠️', description: 'The board is unhappy. Shareholders are calling for your resignation.', color: 'var(--neon-red)' };
+  return { title: 'FAILED CEO', emoji: '💀', description: 'The company collapsed under your leadership. Bankruptcy filing imminent.', color: 'var(--neon-red)' };
 }

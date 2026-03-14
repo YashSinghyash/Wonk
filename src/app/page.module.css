@@ -20,8 +20,8 @@
 }
 
 .outlineText {
-  color: transparent;
-  -webkit-text-stroke: 2px var(--foreground);
+  color: var(--tech-cyan);
+  text-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
 }
 
 .description {
@@ -41,20 +41,21 @@
 .secondaryBtn {
   padding: 16px 32px;
   border-radius: 0;
-  border: 2px solid var(--border);
-  background: var(--background);
-  color: var(--foreground);
+  border: 1px solid var(--tech-cyan);
+  background: rgba(0, 240, 255, 0.05);
+  color: var(--tech-cyan);
   font-family: var(--font-mono);
   font-weight: 800;
   text-transform: uppercase;
   transition: all 0.2s;
-  box-shadow: 4px 4px 0px var(--surface);
+  box-shadow: 4px 4px 0px rgba(0, 240, 255, 0.2);
 }
 
 .secondaryBtn:hover {
-  border-color: var(--foreground);
+  background: var(--tech-cyan);
+  color: var(--background);
   transform: translate(-2px, -2px);
-  box-shadow: 8px 8px 0px var(--border);
+  box-shadow: 6px 6px 0px rgba(0, 240, 255, 0.4);
 }
 
 .features {
@@ -78,10 +79,11 @@
 .features :global(.card h3) {
   font-size: 2rem;
   margin-bottom: 1rem;
-  border-bottom: 2px solid var(--border);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding-bottom: 0.5rem;
   display: inline-block;
   transition: all 0.2s ease;
+  color: #fff;
 }
 
 .features :global(.card p) {

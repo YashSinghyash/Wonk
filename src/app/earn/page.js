@@ -1,6 +1,7 @@
 'use client';
 
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import Script from 'next/script';
 import styles from './Earn.module.css';
 
 const contests = [
@@ -10,7 +11,7 @@ const contests = [
     type: 'CEO Finance Simulation',
     difficulty: 'Hard',
     duration: '5–10 min',
-    entryFee: '₹0 FREE',
+    entryFee: '₹1',
     description: 'You are the CEO of Orion Technologies — a struggling AI infrastructure startup burning $4M per quarter. Navigate 6 brutal stages: VC negotiations, cloud partnerships, revenue crises, GPU pivots, activist investors, and a final acquisition offer. Every decision you make impacts cash, valuation, headcount, and equity. Will you IPO at $1.4B or go bankrupt in month 28?',
     stages: 6,
     players: '2,847',
@@ -19,8 +20,47 @@ const contests = [
 ];
 
 export default function EarnPage() {
+  const router = useRouter();
+
+  const handleStartContest = (contestId) => {
+    if (typeof window === 'undefined' || !window.Razorpay) {
+      alert("Razorpay SDK failed to load. Please check your connection.");
+      return;
+    }
+
+    const options = {
+      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || "rzp_test_dummyKey123", // Use env variable or fallback
+      amount: 100, // Amount is in currency subunits (100 paise = ₹1)
+      currency: "INR",
+      name: "WONK | Gamified Finance",
+      description: "Contest Entry Fee",
+      handler: function (response) {
+        // Payment Success Handler
+        console.log("Payment successful:", response);
+        // Automatically route to contest after successful dummy payment
+        router.push(`/earn/contest/${contestId}`);
+      },
+      prefill: {
+        name: "WONK Trader",
+        email: "trader@wonk.finance",
+        contact: "9999999999"
+      },
+      theme: {
+        color: "#000000" // B&W theme matching
+      }
+    };
+
+    const paymentObject = new window.Razorpay(options);
+    paymentObject.on('payment.failed', function (response){
+      alert("Payment failed. Please try again.");
+    });
+    paymentObject.open();
+  };
+
   return (
     <div className={styles.container}>
+      <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="lazyOnload" />
+      
       <header className={styles.header}>
         <h1>CONTESTS</h1>
         <p className={styles.subtitle}>Enter competitive finance simulations. Prove your worth.</p>
@@ -56,9 +96,29 @@ export default function EarnPage() {
               </div>
             </div>
 
-            <Link href={`/earn/contest/${contest.id}`} className={styles.startBtn}>
-              START CONTEST →
-            </Link>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%' }}>
+              <button 
+                onClick={() => handleStartContest(contest.id)} 
+                className={styles.startBtn}
+                style={{ border: 'none', cursor: 'pointer', width: '100%' }}
+              >
+                PAY ₹1 TO ENTER
+              </button>
+              
+              <button 
+                onClick={() => router.push(`/earn/contest/${contest.id}`)} 
+                className={styles.startBtn}
+                style={{ 
+                  background: 'transparent', 
+                  color: 'var(--foreground)', 
+                  border: '2px solid var(--foreground)', 
+                  cursor: 'pointer', 
+                  width: '100%' 
+                }}
+              >
+                TEST RUN (FREE BYPASS)
+              </button>
+            </div>
           </div>
         ))}
       </div>

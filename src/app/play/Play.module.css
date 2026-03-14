@@ -79,9 +79,13 @@
   border: 2px solid var(--border);
 }
 
-.statusIcon.solved {
-  background: var(--foreground);
-  border-color: var(--foreground);
+.solvedTick {
+  display: inline-block;
+  color: #4ade80; /* Bright Green */
+  font-size: 1.2rem;
+  font-weight: 900;
+  width: 16px;
+  text-align: center;
 }
 
 /* Title and description */
